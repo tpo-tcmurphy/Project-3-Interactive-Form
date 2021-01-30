@@ -142,25 +142,6 @@ payType.addEventListener('change', (e) => {
 // Define variables
 const form = document.querySelector('form')
 
-// event listener for form validation
-
-form.addEventListener('submit', (e) => {
-  const validChecker = []
-
-  validChecker.push(validName())
-  validChecker.push(validEmail())
-  validChecker.push(validActivities())
-
-  if (payType.value === 'credit-card') {
-    validChecker.push(validCcNumber())
-    validChecker.push(validZipCode())
-    validChecker.push(validCvv())
-  }
-  if (validChecker.includes(false)) {
-    e.preventDefault()
-  }
-})
-
 // Name Section
 function validName () {
   const nameInput = nameField.value
@@ -278,3 +259,21 @@ function validCvv () {
   }
   return regCVV
 }
+// event listener for form validation
+
+form.addEventListener('submit', (e) => {
+  const validChecker = []
+
+  validChecker.push(validName())
+  validChecker.push(validEmail())
+  validChecker.push(validActivities())
+
+  if (payType.value === 'credit-card') {
+    validChecker.push(validCcNumber())
+    validChecker.push(validZipCode())
+    validChecker.push(validCvv())
+  }
+  if (validChecker.includes(false)) {
+    e.preventDefault()
+  }
+})
